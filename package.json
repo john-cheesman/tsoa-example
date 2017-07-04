@@ -29,6 +29,7 @@
     "@types/mocha": "^2.2.41",
     "@types/node": "^6.0.33",
     "chai": "^4.0.2",
+    "chai-as-promised": "^7.1.0",
     "mocha": "^3.4.2",
     "ncp": "^2.0.0",
     "nyc": "^11.0.3",

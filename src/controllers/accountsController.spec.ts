@@ -1,9 +1,11 @@
-import { AccountsController } from './accountsController';
+import {AccountsController} from './accountsController';
+import {expect} from 'chai';
+import 'mocha';
 
 describe('AccountsController', () => {
     let controller: AccountsController;
 
-    beforeAll(() => {
+    before(() => {
         controller = new AccountsController();
     });
 
@@ -13,11 +15,12 @@ describe('AccountsController', () => {
 
             returnedValue = controller.current();
 
-            expect(returnedValue).toEqual(jasmine.any(Promise));
+	    expect(returnedValue).to.be.a('Promise');
         });
 
         it('Should be true', () => {
-            expect(false).toBeTruthy();
+            expect(false).to.be.true;
         });
     });
 });
+

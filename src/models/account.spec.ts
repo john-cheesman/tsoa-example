@@ -14,6 +14,10 @@ describe('TestAccount', () => {
     });
 
     describe('id', () => {
-        it('Should be a number', () => {            expect(account.id).to.be.a)         });
+    	it('Should be a number', () => {         
+            expect(account).to.have.property('id');
+            expect(account.id).to.be.a('number');
+	});
     });
 });
+

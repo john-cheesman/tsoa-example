@@ -1,6 +1,12 @@
-import {AccountsController} from './accountsController';
-import {expect} from 'chai';
+import { AccountsController } from './accountsController';
+import { expect, use } from 'chai';
+import * as chaiAsPromised from 'chai-as-promised';
+import * as chaiThings from 'chai-things';
 import 'mocha';
+
+use(chaiThings);
+use(chaiAsPromised);
+
 
 describe('AccountsController', () => {
     let controller: AccountsController;
@@ -9,17 +15,26 @@ describe('AccountsController', () => {
         controller = new AccountsController();
     });
 
-    describe('AccountsController.current', () => {
+    describe('current', () => {
         it('Should return a promise', () => {
-            let returnedValue;
-
-            returnedValue = controller.current();
-
-	    expect(returnedValue).to.be.a('Promise');
+            expect(controller.current()).to.be.a('Promise');
         });
 
-        it('Should be true', () => {
-            expect(false).to.be.true;
+        it('Should eventually return a TestAccount', () => {
+            expect(controller.current()).to.eventually.have.property('id', 600);
+            expect(controller.current()).to.eventually.have.property('name', 'test');
+        });
+    });
+
+    describe('getUsers', () => {
+        it('Should return a promise', () => {
+            expect(controller.getUsers()).to.be.a('Promise');
+        });
+
+        it('Should eventually return a User array', () => {
+            expect(controller.getUsers()).to.eventually.be.an('Array');
+            expect(controller.getUsers()).to.eventually.have.length(2);
+            expect(controller.getUsers()).to.eventually.all.have.property('id');
         });
     });
 });

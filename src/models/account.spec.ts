@@ -7,10 +7,10 @@ describe('TestAccount', () => {
 
     before(() => {
         account = {
-            id: 1,
             address: 'TestAddress',
+            id: 1,
             name: 'TestName'
-        }
+        };
     });
 
     describe('id', () => {
